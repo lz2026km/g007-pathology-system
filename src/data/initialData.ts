@@ -1497,31 +1497,31 @@ export const molecularTests: MolecularTest[] = [
 ];
 
 export const regionalHospitals: RegionalHospital[] = [
-  { id: 'RH001', name: '浦东新区人民医院', level: '三乙', address: '上海市浦东新区拱鸣路1500号', casesSubmitted: 1256, casesReported: 1240, avgTurnaroundHours: 48.5, pendingCases: 8, online: true, lastSubmitTime: '2025-05-02 14:30' },
-  { id: 'RH002', name: '闵行区中心医院', level: '二甲', address: '上海市闵行区莘庄镇莘松路170号', casesSubmitted: 892, casesReported: 885, avgTurnaroundHours: 52.3, pendingCases: 4, online: true, lastSubmitTime: '2025-05-02 11:00' },
-  { id: 'RH003', name: '嘉定区中心医院', level: '二甲', address: '上海市嘉定区城中路1号', casesSubmitted: 756, casesReported: 756, avgTurnaroundHours: 45.0, pendingCases: 0, online: true, lastSubmitTime: '2025-05-01 16:00' },
-  { id: 'RH004', name: '宝山区中西医结合医院', level: '二乙', address: '上海市宝山区友谊路181号', casesSubmitted: 423, casesReported: 420, avgTurnaroundHours: 58.2, pendingCases: 2, online: false },
-  { id: 'RH005', name: '松江区中心医院', level: '二甲', address: '上海市松江区中山中路748号', casesSubmitted: 634, casesReported: 630, avgTurnaroundHours: 50.1, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 09:15' },
-  { id: 'RH006', name: '青浦区中山医院', level: '三乙', address: '上海市青浦区公园东路1158号', casesSubmitted: 1089, casesReported: 1075, avgTurnaroundHours: 46.8, pendingCases: 7, online: true, lastSubmitTime: '2025-05-02 13:45' },
-  { id: 'RH007', name: '奉贤区中心医院', level: '二甲', address: '上海市奉贤区南桥镇人民中路58号', casesSubmitted: 545, casesReported: 540, avgTurnaroundHours: 53.5, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 10:30' },
-  { id: 'RH008', name: '崇明区中心医院', level: '二乙', address: '上海市崇明区城桥镇南门路81号', casesSubmitted: 312, casesReported: 308, avgTurnaroundHours: 62.0, pendingCases: 2, online: true, lastSubmitTime: '2025-05-01 15:00' },
-  { id: 'RH009', name: '徐汇区中心医院', level: '二甲', address: '上海市徐汇区淮海中路966号', casesSubmitted: 678, casesReported: 672, avgTurnaroundHours: 48.0, pendingCases: 4, online: true, lastSubmitTime: '2025-05-02 08:00' },
-  { id: 'RH010', name: '长宁区中心医院', level: '二甲', address: '上海市长宁区仙霞路1111号', casesSubmitted: 590, casesReported: 585, avgTurnaroundHours: 49.5, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 10:00' },
-  { id: 'RH011', name: '静安区中心医院', level: '二甲', address: '上海市静安区西康路259号', casesSubmitted: 720, casesReported: 715, avgTurnaroundHours: 46.2, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 14:00' },
-  { id: 'RH012', name: '普陀区中心医院', level: '二甲', address: '上海市普陀区兰溪路164号', casesSubmitted: 480, casesReported: 475, avgTurnaroundHours: 51.8, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 16:30' },
-  { id: 'RH013', name: '虹口区中心医院', level: '二甲', address: '上海市虹口区乍浦路86号', casesSubmitted: 520, casesReported: 515, avgTurnaroundHours: 50.5, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 09:30' },
-  { id: 'RH014', name: '黄浦区中心医院', level: '二甲', address: '上海市黄浦区四川中路109号', casesSubmitted: 445, casesReported: 440, avgTurnaroundHours: 52.8, pendingCases: 3, online: false },
-  { id: 'RH015', name: '杨浦区中心医院', level: '三乙', address: '上海市杨浦区波阳路130号', casesSubmitted: 850, casesReported: 840, avgTurnaroundHours: 47.5, pendingCases: 5, online: true, lastSubmitTime: '2025-05-02 12:00' },
-  { id: 'RH016', name: '金山区中心医院', level: '二甲', address: '上海市金山区石化象州路1号', casesSubmitted: 380, casesReported: 375, avgTurnaroundHours: 55.2, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 11:00' },
-  { id: 'RH017', name: '复旦大学附属中山医院青浦分院', level: '三甲', address: '上海市青浦区公园东路1158号', casesSubmitted: 1560, casesReported: 1555, avgTurnaroundHours: 38.0, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 16:00' },
-  { id: 'RH018', name: '上海交通大学医学院附属第九人民医院', level: '三甲', address: '上海市黄浦区制造局路639号', casesSubmitted: 2100, casesReported: 2090, avgTurnaroundHours: 36.5, pendingCases: 5, online: true, lastSubmitTime: '2025-05-02 17:00' },
-  { id: 'RH019', name: '上海市第一人民医院', level: '三甲', address: '上海市虹口区武进路85号', casesSubmitted: 1850, casesReported: 1840, avgTurnaroundHours: 37.2, pendingCases: 6, online: true, lastSubmitTime: '2025-05-02 15:00' },
-  { id: 'RH020', name: '上海长征医院', level: '三甲', address: '上海市黄浦区凤阳路415号', casesSubmitted: 1680, casesReported: 1670, avgTurnaroundHours: 39.8, pendingCases: 5, online: true, lastSubmitTime: '2025-05-02 14:00' },
+  { id: 'RH001', name: '东华区第一医院', level: '三乙', address: '上海市浦东新区云锦路1500号', casesSubmitted: 1256, casesReported: 1240, avgTurnaroundHours: 48.5, pendingCases: 8, online: true, lastSubmitTime: '2025-05-02 14:30' },
+  { id: 'RH002', name: '静安区第一医院', level: '二甲', address: '上海市闵行区新城大道170号', casesSubmitted: 892, casesReported: 885, avgTurnaroundHours: 52.3, pendingCases: 4, online: true, lastSubmitTime: '2025-05-02 11:00' },
+  { id: 'RH003', name: '南汇区第一医院', level: '二甲', address: '上海市嘉定区港城支路88号', casesSubmitted: 756, casesReported: 756, avgTurnaroundHours: 45.0, pendingCases: 0, online: true, lastSubmitTime: '2025-05-01 16:00' },
+  { id: 'RH004', name: '青浦区中西医结合医院', level: '二乙', address: '上海市宝山区翠湖路55号', casesSubmitted: 423, casesReported: 420, avgTurnaroundHours: 58.2, pendingCases: 2, online: false },
+  { id: 'RH005', name: '崇明区第一医院', level: '二甲', address: '上海市松江区临港工业园路200号', casesSubmitted: 634, casesReported: 630, avgTurnaroundHours: 50.1, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 09:15' },
+  { id: 'RH006', name: '金山区第一医院', level: '三乙', address: '上海市青浦区望海路888号', casesSubmitted: 1089, casesReported: 1075, avgTurnaroundHours: 46.8, pendingCases: 7, online: true, lastSubmitTime: '2025-05-02 13:45' },
+  { id: 'RH007', name: '金山区第一医院', level: '二甲', address: '上海市奉贤区南桥镇海滨路66号', casesSubmitted: 545, casesReported: 540, avgTurnaroundHours: 53.5, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 10:30' },
+  { id: 'RH008', name: '松江区医疗中心', level: '二乙', address: '上海市崇明区城桥镇东湖路33号', casesSubmitted: 312, casesReported: 308, avgTurnaroundHours: 62.0, pendingCases: 2, online: true, lastSubmitTime: '2025-05-01 15:00' },
+  { id: 'RH009', name: '虹口区医疗中心', level: '二甲', address: '上海市徐汇区金融街288号', casesSubmitted: 678, casesReported: 672, avgTurnaroundHours: 48.0, pendingCases: 4, online: true, lastSubmitTime: '2025-05-02 08:00' },
+  { id: 'RH010', name: '普陀区医疗中心', level: '二甲', address: '上海市长宁区科技园666号', casesSubmitted: 590, casesReported: 585, avgTurnaroundHours: 49.5, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 10:00' },
+  { id: 'RH011', name: '闸北区医疗中心', level: '二甲', address: '上海市静安区文教路122号', casesSubmitted: 720, casesReported: 715, avgTurnaroundHours: 46.2, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 14:00' },
+  { id: 'RH012', name: '杨浦区医疗中心', level: '二甲', address: '上海市普陀区工业路99号', casesSubmitted: 480, casesReported: 475, avgTurnaroundHours: 51.8, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 16:30' },
+  { id: 'RH013', name: '卢湾区医疗中心', level: '二甲', address: '上海市虹口区新湾路77号', casesSubmitted: 520, casesReported: 515, avgTurnaroundHours: 50.5, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 09:30' },
+  { id: 'RH014', name: '徐汇区医疗中心', level: '二甲', address: '上海市黄浦区中央商务区188号', casesSubmitted: 445, casesReported: 440, avgTurnaroundHours: 52.8, pendingCases: 3, online: false },
+  { id: 'RH015', name: '长宁区医疗中心', level: '三乙', address: '上海市杨浦区滨江大道520号', casesSubmitted: 850, casesReported: 840, avgTurnaroundHours: 47.5, pendingCases: 5, online: true, lastSubmitTime: '2025-05-02 12:00' },
+  { id: 'RH016', name: '闵行区医疗中心', level: '二甲', address: '上海市金山区开发区中心路1号', casesSubmitted: 380, casesReported: 375, avgTurnaroundHours: 55.2, pendingCases: 3, online: true, lastSubmitTime: '2025-05-01 11:00' },
+  { id: 'RH017', name: '国家医学中心直属医院', level: '三甲', address: '上海市青浦区望海路888号', casesSubmitted: 1560, casesReported: 1555, avgTurnaroundHours: 38.0, pendingCases: 3, online: true, lastSubmitTime: '2025-05-02 16:00' },
+  { id: 'RH018', name: '国家临床医学中心', level: '三甲', address: '上海市黄浦区创新路100号', casesSubmitted: 2100, casesReported: 2090, avgTurnaroundHours: 36.5, pendingCases: 5, online: true, lastSubmitTime: '2025-05-02 17:00' },
+  { id: 'RH019', name: '国家医学中心第一医院', level: '三甲', address: '上海市虹口区医学路85号', casesSubmitted: 1850, casesReported: 1840, avgTurnaroundHours: 37.2, pendingCases: 6, online: true, lastSubmitTime: '2025-05-02 15:00' },
+  { id: 'RH020', name: '国家医学中心分部', level: '三甲', address: '上海市黄浦区复兴路415号', casesSubmitted: 1680, casesReported: 1670, avgTurnaroundHours: 39.8, pendingCases: 5, online: true, lastSubmitTime: '2025-05-02 14:00' },
 ];
 
 export const consultationRequests: ConsultationRequest[] = [
   {
-    id: 'C001', requestingHospital: '浦东新区人民医院', requestingDoctor: '赵志刚', patientName: '钱文华', gender: '女', age: 55,
+    id: 'C001', requestingHospital: '东华区第一医院', requestingDoctor: '赵志刚', patientName: '钱文华', gender: '女', age: 55,
     specimenType: '胃窦活检', clinicalHistory: '反复上腹部不适半年，胃镜示胃窦溃疡',
     originalDiagnosis: '胃腺癌（低分化）', consultationQuestion: '请确认分化程度及HER2状态评估',
     submittedImages: 8, status: '已完成', assignedExpert: '李敏', turnaroundHours: 24,
@@ -1529,7 +1529,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 10:00', completeTime: '2025-05-02 10:00'
   },
   {
-    id: 'C002', requestingHospital: '闵行区中心医院', requestingDoctor: '周丽华', patientName: '孙志明', gender: '男', age: 62,
+    id: 'C002', requestingHospital: '静安区第一医院', requestingDoctor: '周丽华', patientName: '孙志明', gender: '男', age: 62,
     specimenType: '肺穿刺活检', clinicalHistory: '咳嗽伴痰中带血2月，CT示右上肺占位',
     originalDiagnosis: '倾向腺癌', consultationQuestion: '请进一步明确组织学分型及分子标志物',
     submittedImages: 6, status: '已完成', assignedExpert: '张建国', turnaroundHours: 18,
@@ -1537,21 +1537,21 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 15:30', completeTime: '2025-05-02 09:30'
   },
   {
-    id: 'C003', requestingHospital: '嘉定区中心医院', requestingDoctor: '吴晓东', patientName: '郑美丽', gender: '女', age: 45,
+    id: 'C003', requestingHospital: '南汇区第一医院', requestingDoctor: '吴晓东', patientName: '郑美丽', gender: '女', age: 45,
     specimenType: '乳腺穿刺', clinicalHistory: '左乳肿块，BI-RADS 4C',
     originalDiagnosis: '浸润性癌', consultationQuestion: '请确认分子分型',
     submittedImages: 5, status: '阅片中', assignedExpert: '王丽华',
     submitTime: '2025-05-02 09:00'
   },
   {
-    id: 'C004', requestingHospital: '松江区中心医院', requestingDoctor: '黄志强', patientName: '周大海', gender: '男', age: 58,
+    id: 'C004', requestingHospital: '崇明区第一医院', requestingDoctor: '黄志强', patientName: '周大海', gender: '男', age: 58,
     specimenType: '直肠肿块', clinicalHistory: '便血3月，肠镜示直肠肿块',
     originalDiagnosis: '直肠腺癌', consultationQuestion: '请评估新辅助治疗效果及术后方案',
     submittedImages: 12, status: '待分配',
     submitTime: '2025-05-02 08:30'
   },
   {
-    id: 'C005', requestingHospital: '青浦区中山医院', requestingDoctor: '马立军', patientName: '马琳娜', gender: '女', age: 49,
+    id: 'C005', requestingHospital: '金山区第一医院', requestingDoctor: '马立军', patientName: '马琳娜', gender: '女', age: 49,
     specimenType: '右乳穿刺', clinicalHistory: '右乳肿块，BI-RADS 5',
     originalDiagnosis: '右乳浸润性癌', consultationQuestion: '请确认分子分型及HER2状态',
     submittedImages: 6, status: '已完成', assignedExpert: '王丽华', turnaroundHours: 20,
@@ -1559,7 +1559,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 14:00', completeTime: '2025-05-02 10:00'
   },
   {
-    id: 'C006', requestingHospital: '奉贤区中心医院', requestingDoctor: '陈志明', patientName: '刘凤英', gender: '女', age: 46,
+    id: 'C006', requestingHospital: '金山区第一医院', requestingDoctor: '陈志明', patientName: '刘凤英', gender: '女', age: 46,
     specimenType: '骨髓活检', clinicalHistory: '全血细胞减少2月',
     originalDiagnosis: '骨髓增生异常综合征', consultationQuestion: '请确认MDS类型及预后评估',
     submittedImages: 4, status: '已完成', assignedExpert: '刘明辉', turnaroundHours: 30,
@@ -1567,7 +1567,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 09:00', completeTime: '2025-05-02 15:00'
   },
   {
-    id: 'C007', requestingHospital: '宝山区中西医结合医院', requestingDoctor: '徐志远', patientName: '杨大海', gender: '男', age: 73,
+    id: 'C007', requestingHospital: '青浦区中西医结合医院', requestingDoctor: '徐志远', patientName: '杨大海', gender: '男', age: 73,
     specimenType: '脑肿瘤活检', clinicalHistory: '头痛伴左侧肢体无力2周',
     originalDiagnosis: '高级别胶质瘤', consultationQuestion: '请确认WHO分级及分子分型',
     submittedImages: 8, status: '已完成', assignedExpert: '李敏', turnaroundHours: 25,
@@ -1575,7 +1575,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-04-30 16:00', completeTime: '2025-05-01 17:00'
   },
   {
-    id: 'C008', requestingHospital: '徐汇区中心医院', requestingDoctor: '王秀英', patientName: '周建平', gender: '男', age: 62,
+    id: 'C008', requestingHospital: '虹口区医疗中心', requestingDoctor: '王秀英', patientName: '周建平', gender: '男', age: 62,
     specimenType: '左肺穿刺', clinicalHistory: '左上肺占位，吸烟史30年',
     originalDiagnosis: '左肺癌', consultationQuestion: '请确认组织学类型及驱动基因检测',
     submittedImages: 5, status: '已完成', assignedExpert: '张建国', turnaroundHours: 22,
@@ -1583,14 +1583,14 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 11:00', completeTime: '2025-05-02 09:00'
   },
   {
-    id: 'C009', requestingHospital: '杨浦区中心医院', requestingDoctor: '李志刚', patientName: '黄志勇', gender: '男', age: 57,
+    id: 'C009', requestingHospital: '长宁区医疗中心', requestingDoctor: '李志刚', patientName: '黄志勇', gender: '男', age: 57,
     specimenType: '食管活检', clinicalHistory: '进行性吞咽困难3月',
     originalDiagnosis: '食管鳞癌', consultationQuestion: '请确认分化程度及治疗方案',
     submittedImages: 6, status: '阅片中', assignedExpert: '张建国',
     submitTime: '2025-05-02 10:00'
   },
   {
-    id: 'C010', requestingHospital: '长宁区中心医院', requestingDoctor: '张志伟', patientName: '曹雪梅', gender: '女', age: 36,
+    id: 'C010', requestingHospital: '普陀区医疗中心', requestingDoctor: '张志伟', patientName: '曹雪梅', gender: '女', age: 36,
     specimenType: '甲状腺穿刺', clinicalHistory: '甲状腺结节TI-RADS 4类',
     originalDiagnosis: '甲状腺乳头状癌待排', consultationQuestion: '请确认诊断及手术方案',
     submittedImages: 4, status: '已完成', assignedExpert: '陈志强', turnaroundHours: 16,
@@ -1598,7 +1598,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 15:00', completeTime: '2025-05-02 07:00'
   },
   {
-    id: 'C011', requestingHospital: '崇明区中心医院', requestingDoctor: '赵志明', patientName: '田华', gender: '女', age: 35,
+    id: 'C011', requestingHospital: '松江区医疗中心', requestingDoctor: '赵志明', patientName: '田华', gender: '女', age: 35,
     specimenType: '子宫内膜活检', clinicalHistory: '异常子宫出血1年',
     originalDiagnosis: '子宫内膜单纯性增生', consultationQuestion: '请排除癌变及进一步治疗建议',
     submittedImages: 3, status: '已完成', assignedExpert: '王丽华', turnaroundHours: 18,
@@ -1606,14 +1606,14 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 08:00', completeTime: '2025-05-02 02:00'
   },
   {
-    id: 'C012', requestingHospital: '金山区中心医院', requestingDoctor: '周志刚', patientName: '贾志明', gender: '男', age: 69,
+    id: 'C012', requestingHospital: '闵行区医疗中心', requestingDoctor: '周志刚', patientName: '贾志明', gender: '男', age: 69,
     specimenType: '膀胱活检', clinicalHistory: '无痛性血尿2月',
     originalDiagnosis: '膀胱乳头状肿瘤', consultationQuestion: '请确认分级及分期',
     submittedImages: 5, status: '待分配',
     submitTime: '2025-05-02 09:00'
   },
   {
-    id: 'C013', requestingHospital: '静安区中心医院', requestingDoctor: '吴志明', patientName: '韩丽娜', gender: '女', age: 50,
+    id: 'C013', requestingHospital: '闸北区医疗中心', requestingDoctor: '吴志明', patientName: '韩丽娜', gender: '女', age: 50,
     specimenType: '腋窝淋巴结穿刺', clinicalHistory: '左腋窝淋巴结肿大',
     originalDiagnosis: '淋巴结转移性癌', consultationQuestion: '请明确原发灶及分子分型',
     submittedImages: 6, status: '已完成', assignedExpert: '王丽华', turnaroundHours: 24,
@@ -1621,7 +1621,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-04-30 14:00', completeTime: '2025-05-01 14:00'
   },
   {
-    id: 'C014', requestingHospital: '普陀区中心医院', requestingDoctor: '孙志刚', patientName: '钱文华', gender: '男', age: 59,
+    id: 'C014', requestingHospital: '杨浦区医疗中心', requestingDoctor: '孙志刚', patientName: '钱文华', gender: '男', age: 59,
     specimenType: '肝占位穿刺', clinicalHistory: '肝血管瘤复查增大',
     originalDiagnosis: '肝血管瘤', consultationQuestion: '请排除恶性可能',
     submittedImages: 4, status: '已完成', assignedExpert: '张建国', turnaroundHours: 15,
@@ -1629,7 +1629,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 10:00', completeTime: '2025-05-01 17:00'
   },
   {
-    id: 'C015', requestingHospital: '虹口区中心医院', requestingDoctor: '郑志刚', patientName: '陈国栋', gender: '男', age: 53,
+    id: 'C015', requestingHospital: '卢湾区医疗中心', requestingDoctor: '郑志刚', patientName: '陈国栋', gender: '男', age: 53,
     specimenType: '心包积液细胞学', clinicalHistory: '心包积液查因',
     originalDiagnosis: '腺癌细胞', consultationQuestion: '请明确来源及分期',
     submittedImages: 3, status: '已完成', assignedExpert: '李敏', turnaroundHours: 20,
@@ -1637,14 +1637,14 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 16:00', completeTime: '2025-05-02 12:00'
   },
   {
-    id: 'C016', requestingHospital: '黄浦区中心医院', requestingDoctor: '王志刚', patientName: '林晓晓', gender: '女', age: 32,
+    id: 'C016', requestingHospital: '徐汇区医疗中心', requestingDoctor: '王志刚', patientName: '林晓晓', gender: '女', age: 32,
     specimenType: '腹腔肿物穿刺', clinicalHistory: '腹痛半月，腹腔占位',
     originalDiagnosis: '腹腔转移性腺癌', consultationQuestion: '请明确原发灶及治疗方案',
     submittedImages: 5, status: '待分配',
     submitTime: '2025-05-02 11:00'
   },
   {
-    id: 'C017', requestingHospital: '复旦大学附属中山医院青浦分院', requestingDoctor: '李志明', patientName: '徐志强', gender: '男', age: 65,
+    id: 'C017', requestingHospital: '国家医学中心直属医院', requestingDoctor: '李志明', patientName: '徐志强', gender: '男', age: 65,
     specimenType: '右肾穿刺', clinicalHistory: '右肾占位',
     originalDiagnosis: '肾癌', consultationQuestion: '请确认病理类型及分级',
     submittedImages: 4, status: '已完成', assignedExpert: '陈志强', turnaroundHours: 14,
@@ -1652,7 +1652,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 09:00', completeTime: '2025-05-01 17:00'
   },
   {
-    id: 'C018', requestingHospital: '上海交通大学医学院附属第九人民医院', requestingDoctor: '张志华', patientName: '段丽华', gender: '女', age: 40,
+    id: 'C018', requestingHospital: '国家临床医学中心', requestingDoctor: '张志华', patientName: '段丽华', gender: '女', age: 40,
     specimenType: '右乳穿刺', clinicalHistory: '右乳肿块BI-RADS 4B',
     originalDiagnosis: '右乳导管内癌', consultationQuestion: '请确认是否有浸润成分',
     submittedImages: 6, status: '已完成', assignedExpert: '王丽华', turnaroundHours: 18,
@@ -1660,7 +1660,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 14:00', completeTime: '2025-05-02 08:00'
   },
   {
-    id: 'C019', requestingHospital: '上海市第一人民医院', requestingDoctor: '赵志刚', patientName: '姜志远', gender: '男', age: 61,
+    id: 'C019', requestingHospital: '国家医学中心第一医院', requestingDoctor: '赵志刚', patientName: '姜志远', gender: '男', age: 61,
     specimenType: '左肩胛骨肿物活检', clinicalHistory: '左肩胛骨疼痛2月',
     originalDiagnosis: '骨肉瘤', consultationQuestion: '请确认病理诊断及化疗方案',
     submittedImages: 7, status: '已完成', assignedExpert: '刘明辉', turnaroundHours: 22,
@@ -1668,7 +1668,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-04-30 11:00', completeTime: '2025-05-01 09:00'
   },
   {
-    id: 'C020', requestingHospital: '上海长征医院', requestingDoctor: '孙志刚', patientName: '龚晓燕', gender: '女', age: 34,
+    id: 'C020', requestingHospital: '国家医学中心分部', requestingDoctor: '孙志刚', patientName: '龚晓燕', gender: '女', age: 34,
     specimenType: '支气管镜活检', clinicalHistory: '右下肺不张',
     originalDiagnosis: '肺炎', consultationQuestion: '请排除肿瘤可能',
     submittedImages: 4, status: '已完成', assignedExpert: '李敏', turnaroundHours: 12,
@@ -1676,7 +1676,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 08:00', completeTime: '2025-05-01 16:00'
   },
   {
-    id: 'C021', requestingHospital: '浦东新区人民医院', requestingDoctor: '马志刚', patientName: '邓秀英', gender: '女', age: 37,
+    id: 'C021', requestingHospital: '东华区第一医院', requestingDoctor: '马志刚', patientName: '邓秀英', gender: '女', age: 37,
     specimenType: '宫颈赘生物', clinicalHistory: '宫颈赘生物',
     originalDiagnosis: '宫颈息肉', consultationQuestion: '请排除恶性可能',
     submittedImages: 3, status: '已完成', assignedExpert: '王丽华', turnaroundHours: 10,
@@ -1684,14 +1684,14 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-02 10:00', completeTime: '2025-05-02 14:00'
   },
   {
-    id: 'C022', requestingHospital: '闵行区中心医院', requestingDoctor: '黄志刚', patientName: '冯志强', gender: '男', age: 45,
+    id: 'C022', requestingHospital: '静安区第一医院', requestingDoctor: '黄志刚', patientName: '冯志强', gender: '男', age: 45,
     specimenType: '右下肺穿刺', clinicalHistory: '右下肺占位',
     originalDiagnosis: '右下肺腺癌', consultationQuestion: '请确认分期及治疗方案',
     submittedImages: 5, status: '阅片中', assignedExpert: '张建国',
     submitTime: '2025-05-03 09:00'
   },
   {
-    id: 'C023', requestingHospital: '嘉定区中心医院', requestingDoctor: '徐志刚', patientName: '丁建新', gender: '男', age: 60,
+    id: 'C023', requestingHospital: '南汇区第一医院', requestingDoctor: '徐志刚', patientName: '丁建新', gender: '男', age: 60,
     specimenType: '胸椎活检', clinicalHistory: '胸椎骨折伴疼痛',
     originalDiagnosis: '胸椎转移瘤', consultationQuestion: '请明确原发灶',
     submittedImages: 6, status: '已完成', assignedExpert: '刘明辉', turnaroundHours: 20,
@@ -1699,7 +1699,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 15:00', completeTime: '2025-05-02 11:00'
   },
   {
-    id: 'C024', requestingHospital: '松江区中心医院', requestingDoctor: '王志刚', patientName: '孙佳欣', gender: '女', age: 28,
+    id: 'C024', requestingHospital: '崇明区第一医院', requestingDoctor: '王志刚', patientName: '孙佳欣', gender: '女', age: 28,
     specimenType: '卵巢囊肿壁', clinicalHistory: '卵巢囊肿',
     originalDiagnosis: '卵巢畸胎瘤', consultationQuestion: '请确认病理类型',
     submittedImages: 3, status: '已完成', assignedExpert: '王丽华', turnaroundHours: 8,
@@ -1707,14 +1707,14 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-02 08:00', completeTime: '2025-05-02 12:00'
   },
   {
-    id: 'C025', requestingHospital: '青浦区中山医院', requestingDoctor: '李志刚', patientName: '赵志刚', gender: '男', age: 52,
+    id: 'C025', requestingHospital: '金山区第一医院', requestingDoctor: '李志刚', patientName: '赵志刚', gender: '男', age: 52,
     specimenType: '前列腺穿刺', clinicalHistory: '前列腺特异性抗原升高',
     originalDiagnosis: '前列腺癌待排', consultationQuestion: '请确认诊断及Gleason评分',
     submittedImages: 5, status: '待分配',
     submitTime: '2025-05-03 10:00'
   },
   {
-    id: 'C026', requestingHospital: '奉贤区中心医院', requestingDoctor: '张志刚', patientName: '周志明', gender: '男', age: 64,
+    id: 'C026', requestingHospital: '金山区第一医院', requestingDoctor: '张志刚', patientName: '周志明', gender: '男', age: 64,
     specimenType: '心脏占位', clinicalHistory: '心脏占位待查',
     originalDiagnosis: '心脏粘液瘤', consultationQuestion: '请确认病理诊断',
     submittedImages: 4, status: '已完成', assignedExpert: '李敏', turnaroundHours: 15,
@@ -1722,7 +1722,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-04-30 09:00', completeTime: '2025-04-30 18:00'
   },
   {
-    id: 'C027', requestingHospital: '宝山区中西医结合医院', requestingDoctor: '陈志刚', patientName: '吴磊', gender: '男', age: 55,
+    id: 'C027', requestingHospital: '青浦区中西医结合医院', requestingDoctor: '陈志刚', patientName: '吴磊', gender: '男', age: 55,
     specimenType: '左股骨活检', clinicalHistory: '左股骨肿物',
     originalDiagnosis: '骨巨细胞瘤复发', consultationQuestion: '请确认诊断及治疗方案',
     submittedImages: 5, status: '已完成', assignedExpert: '刘明辉', turnaroundHours: 18,
@@ -1730,7 +1730,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 10:00', completeTime: '2025-05-02 04:00'
   },
   {
-    id: 'C028', requestingHospital: '徐汇区中心医院', requestingDoctor: '赵志刚', patientName: '马超', gender: '男', age: 29,
+    id: 'C028', requestingHospital: '虹口区医疗中心', requestingDoctor: '赵志刚', patientName: '马超', gender: '男', age: 29,
     specimenType: '颈部淋巴结', clinicalHistory: '颈部淋巴结肿大',
     originalDiagnosis: '淋巴瘤待排', consultationQuestion: '请确认淋巴瘤类型及分期',
     submittedImages: 6, status: '已完成', assignedExpert: '刘明辉', turnaroundHours: 24,
@@ -1738,7 +1738,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-04-30 14:00', completeTime: '2025-05-01 14:00'
   },
   {
-    id: 'C029', requestingHospital: '杨浦区中心医院', requestingDoctor: '周志刚', patientName: '孙丽华', gender: '女', age: 44,
+    id: 'C029', requestingHospital: '长宁区医疗中心', requestingDoctor: '周志刚', patientName: '孙丽华', gender: '女', age: 44,
     specimenType: '皮肤肿物', clinicalHistory: '右小腿皮肤黑痣增大',
     originalDiagnosis: '皮肤黑色素瘤', consultationQuestion: '请确认Breslow厚度及Clark分级',
     submittedImages: 5, status: '已完成', assignedExpert: '刘明辉', turnaroundHours: 16,
@@ -1746,7 +1746,7 @@ export const consultationRequests: ConsultationRequest[] = [
     submitTime: '2025-05-01 09:00', completeTime: '2025-05-02 01:00'
   },
   {
-    id: 'C030', requestingHospital: '长宁区中心医院', requestingDoctor: '吴志刚', patientName: '高峰', gender: '男', age: 71,
+    id: 'C030', requestingHospital: '普陀区医疗中心', requestingDoctor: '吴志刚', patientName: '高峰', gender: '男', age: 71,
     specimenType: '脑组织活检', clinicalHistory: '脑肿瘤复发',
     originalDiagnosis: '胶质母细胞瘤复发', consultationQuestion: '请确认复发及进一步治疗建议',
     submittedImages: 8, status: '待分配',
