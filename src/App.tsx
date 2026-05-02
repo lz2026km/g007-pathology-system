@@ -11,7 +11,8 @@ import MolecularPage from './pages/MolecularPage'
 import RegionalPage from './pages/RegionalPage'
 import ConsultationPage from './pages/ConsultationPage'
 import CasesPage from './pages/CasesPage'
-import AdminPage from './pages/AdminPage'
+import StatisticsPage from './pages/StatisticsPage'
+import SettingsPage from './pages/SettingsPage'
 
 function App() {
   return (
@@ -30,8 +31,8 @@ function App() {
           <Route path="g007/regional" element={<RegionalPage />} />
           <Route path="g007/consultation" element={<ConsultationPage />} />
           <Route path="g007/cases" element={<CasesPage />} />
-          <Route path="g007/statistics" element={<AdminPage />} />
-          <Route path="g007/admin" element={<AdminPage />} />
+          <Route path="g007/statistics" element={<StatisticsPage />} />
+          <Route path="g007/admin" element={<SettingsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
