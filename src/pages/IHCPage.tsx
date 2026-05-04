@@ -1,6 +1,17 @@
 import { useState } from 'react'
 import { ihcReports, IHCReport, IHCMarker } from '../data/initialData'
 
+// 统计卡片
+function StatCard({ label, value, color, icon }: { label: string; value: number | string; color: string; icon: string }) {
+  return (
+    <div style={{ background: '#fff', borderRadius: 12, padding: 20, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', borderLeft: `4px solid ${color}` }}>
+      <div style={{ color: '#64748b', fontSize: 13, marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 32, fontWeight: 700, color }}>{value}</div>
+      <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4 }}>{icon}</div>
+    </div>
+  )
+}
+
 // 新增组化弹窗
 function AddIHCModal({ onClose, onAdd }: { onClose: () => void; onAdd: (r: IHCReport) => void }) {
   const [form, setForm] = useState({
@@ -50,7 +61,7 @@ function AddIHCModal({ onClose, onAdd }: { onClose: () => void; onAdd: (r: IHCRe
         <div style={{ marginBottom: 16 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
             <label style={{ color: '#64748b', fontSize: 12 }}>标记物</label>
-            <button onClick={addMarker} style={{ padding: '4px 12px', background: '#1e40af', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}>+ 添加标记物</button>
+            <button onClick={addMarker} style={{ padding: '4px 12px', background: '#F97316', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 12 }}>+ 添加标记物</button>
           </div>
           {markers.map((m, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 80px 80px 1fr auto', gap: 8, marginBottom: 8, alignItems: 'center' }}>
@@ -71,7 +82,7 @@ function AddIHCModal({ onClose, onAdd }: { onClose: () => void; onAdd: (r: IHCRe
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12, marginTop: 24, paddingTop: 20, borderTop: '1px solid #e2e8f0' }}>
           <button onClick={onClose} style={{ padding: '8px 24px', background: '#fff', color: '#64748b', border: '1px solid #e2e8f0', borderRadius: 6, cursor: 'pointer', fontSize: 14 }}>取消</button>
-          <button onClick={handleSubmit} style={{ padding: '8px 24px', background: '#1e40af', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 14 }}>保存</button>
+          <button onClick={handleSubmit} style={{ padding: '8px 24px', background: '#F97316', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 14 }}>保存</button>
         </div>
       </div>
     </div>
@@ -100,71 +111,136 @@ export default function IHCPage() {
     setFiltered(updated)
   }
 
+  // 统计数据
+  const totalReports = reports.length
+  const positiveCount = reports.filter(r => r.markers.some(m => m.result === '阳性')).length
+  const negativeCount = reports.filter(r => r.markers.every(m => m.result === '阴性')).length
+  const avgMarkers = (reports.reduce((acc, r) => acc + r.markers.length, 0) / reports.length).toFixed(1)
+
+  // 常见标记物统计
+  const markerStats: Record<string, { positive: number; total: number }> = {}
+  reports.forEach(r => {
+    r.markers.forEach(m => {
+      if (!markerStats[m.marker]) markerStats[m.marker] = { positive: 0, total: 0 }
+      markerStats[m.marker].total++
+      if (m.result === '阳性') markerStats[m.marker].positive++
+    })
+  })
+  const topMarkers = Object.entries(markerStats).sort((a, b) => b[1].total - a[1].total).slice(0, 6)
+
   return (
     <div>
-      <h2 style={{ fontSize: 24, fontWeight: 600, marginBottom: 24 }}>免疫组化</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+        <h2 style={{ fontSize: 24, fontWeight: 600, margin: 0, color: '#1e293b' }}>免疫组化</h2>
+        <button onClick={() => setShowAdd(true)} style={{ padding: '10px 24px', background: '#F97316', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontSize: 14, fontWeight: 500, boxShadow: '0 2px 8px rgba(249,115,22,0.3)' }}>+ 新增组化</button>
+      </div>
+
+      {/* 统计卡片 */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 24 }}>
+        <StatCard label="总报告数" value={totalReports} color="#F97316" icon="📋 免疫组化报告" />
+        <StatCard label="阳性病例" value={positiveCount} color="#16a34a" icon="✅ 检测阳性" />
+        <StatCard label="阴性病例" value={negativeCount} color="#dc2626" icon="❌ 检测阴性" />
+        <StatCard label="平均标记物" value={avgMarkers} color="#7c3aed" icon="🧪 每例平均" />
+      </div>
+
+      {/* 标记物统计 */}
+      <div style={{ background: '#fff', borderRadius: 12, padding: 20, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', marginBottom: 16 }}>
+        <div style={{ fontSize: 14, fontWeight: 600, color: '#1e293b', marginBottom: 16 }}>常用标记物阳性率</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+          {topMarkers.map(([marker, stats]) => {
+            const rate = stats.total > 0 ? Math.round((stats.positive / stats.total) * 100) : 0
+            return (
+              <div key={marker} style={{ background: '#f8fafc', borderRadius: 8, padding: 12 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <span style={{ fontWeight: 600, color: '#1e293b', fontSize: 14 }}>{marker}</span>
+                  <span style={{ fontSize: 12, color: '#64748b' }}>{stats.positive}/{stats.total}</span>
+                </div>
+                <div style={{ background: '#e2e8f0', borderRadius: 4, height: 8, overflow: 'hidden' }}>
+                  <div style={{ width: `${rate}%`, height: '100%', background: rate >= 70 ? '#16a34a' : rate >= 40 ? '#F97316' : '#dc2626', borderRadius: 4, transition: 'width 0.3s' }} />
+                </div>
+                <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 4 }}>{rate}% 阳性率</div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
 
       {/* 筛选栏 */}
-      <div style={{ background: '#fff', borderRadius: 8, padding: 20, boxShadow: '0 1px 3px rgba(0,0,0,0.1)', marginBottom: 16 }}>
-        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <input type="text" placeholder="搜索病理号/患者..." value={searchText} onChange={e => setSearchText(e.target.value)} style={{ padding: '8px 12px', border: '1px solid #ddd', borderRadius: 4, width: 220 }} />
-          <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} style={{ padding: '8px 12px', border: '1px solid #ddd', borderRadius: 4 }}>
+      <div style={{ background: '#fff', borderRadius: 12, padding: 20, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', marginBottom: 16 }}>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+          <input type="text" placeholder="搜索病理号/患者..." value={searchText} onChange={e => setSearchText(e.target.value)} style={{ padding: '10px 14px', border: '1px solid #e2e8f0', borderRadius: 8, width: 240, fontSize: 14, outline: 'none', transition: 'border-color 0.2s' }} onFocus={e => e.target.style.borderColor = '#F97316'} onBlur={e => e.target.style.borderColor = '#e2e8f0'} />
+          <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} style={{ padding: '10px 14px', border: '1px solid #e2e8f0', borderRadius: 8, fontSize: 14, outline: 'none', cursor: 'pointer' }}>
             <option value="">全部状态</option>
             <option value="已完成">已完成</option>
             <option value="制片中">制片中</option>
           </select>
-          <button onClick={doQuery} style={{ padding: '8px 20px', background: '#1e40af', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer' }}>查询</button>
-          <button onClick={() => setShowAdd(true)} style={{ padding: '8px 20px', background: '#fff', color: '#1e40af', border: '1px solid #1e40af', borderRadius: 4, cursor: 'pointer' }}>+ 新增组化</button>
+          <button onClick={doQuery} style={{ padding: '10px 24px', background: '#F97316', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontSize: 14, fontWeight: 500 }}>查询</button>
+          {(searchText || statusFilter) && (
+            <button onClick={() => { setSearchText(''); setStatusFilter(''); setFiltered(reports) }} style={{ padding: '10px 24px', background: '#fff', color: '#dc2626', border: '1px solid #dc2626', borderRadius: 8, cursor: 'pointer', fontSize: 14 }}>清空</button>
+          )}
+          <span style={{ marginLeft: 'auto', color: '#64748b', fontSize: 13 }}>共 {filtered.length} 条记录</span>
         </div>
       </div>
 
       {/* 报告列表 */}
-      <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 1px 3px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+      <div style={{ background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
         {filtered.length === 0 && (
-          <div style={{ padding: 40, textAlign: 'center', color: '#94a3b8' }}>暂无数据</div>
+          <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>📋</div>
+            <div>暂无数据</div>
+          </div>
         )}
         {filtered.map(r => (
-          <div key={r.id} style={{ padding: 20, borderBottom: '1px solid #f1f5f9' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+          <div key={r.id} style={{ padding: 20, borderBottom: '1px solid #f1f5f9', transition: 'background 0.2s' }} onMouseEnter={e => e.currentTarget.style.background = '#f8fafc'} onMouseLeave={e => e.currentTarget.style.background = '#fff'}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
               <div>
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'monospace', color: '#1e40af', fontWeight: 500 }}>{r.specimenId}</span>
-                  <span style={{ fontWeight: 600, fontSize: 15 }}>{r.patientName}</span>
-                  <span style={{ color: '#64748b', fontSize: 13 }}>{r.clinicalDiagnosis}</span>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 8 }}>
+                  <span style={{ fontFamily: 'monospace', color: '#F97316', fontWeight: 600, fontSize: 14, background: 'rgba(249,115,22,0.1)', padding: '4px 10px', borderRadius: 6 }}>{r.specimenId}</span>
+                  <span style={{ fontWeight: 600, fontSize: 16, color: '#1e293b' }}>{r.patientName}</span>
+                  <span style={{ color: '#64748b', fontSize: 13, background: '#f1f5f9', padding: '4px 10px', borderRadius: 4 }}>{r.clinicalDiagnosis}</span>
                 </div>
-                <div style={{ color: '#64748b', fontSize: 12, marginTop: 4 }}>报告时间：{r.reportTime} | 诊断医生：{r.pathologist}</div>
+                <div style={{ color: '#64748b', fontSize: 12 }}>报告时间：{r.reportTime} | 诊断医生：{r.pathologist}</div>
               </div>
-              <span style={{ padding: '2px 10px', borderRadius: 12, fontSize: 12, background: '#dcfce7', color: '#166534' }}>{r.status}</span>
+              <span style={{ padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 500, background: '#dcfce7', color: '#166534' }}>{r.status}</span>
             </div>
             {/* 标记物表格 */}
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
-              <thead>
-                <tr style={{ background: '#f8fafc' }}>
-                  <th style={{ padding: '6px 12px', textAlign: 'left', color: '#64748b', fontWeight: 500 }}>标记物</th>
-                  <th style={{ padding: '6px 12px', textAlign: 'left', color: '#64748b', fontWeight: 500 }}>结果</th>
-                  <th style={{ padding: '6px 12px', textAlign: 'left', color: '#64748b', fontWeight: 500 }}>强度</th>
-                  <th style={{ padding: '6px 12px', textAlign: 'left', color: '#64748b', fontWeight: 500 }}>阳性率</th>
-                  <th style={{ padding: '6px 12px', textAlign: 'left', color: '#64748b', fontWeight: 500 }}>定位</th>
-                </tr>
-              </thead>
-              <tbody>
-                {r.markers.map((m, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                    <td style={{ padding: '6px 12px', fontWeight: 600, color: '#1e40af' }}>{m.marker}</td>
-                    <td style={{ padding: '6px 12px' }}>
-                      <span style={{
-                        padding: '1px 8px', borderRadius: 10, fontSize: 11, fontWeight: 500,
-                        background: m.result === '阳性' ? '#dcfce7' : m.result === '阴性' ? '#fee2e2' : '#fef3c7',
-                        color: m.result === '阳性' ? '#166534' : m.result === '阴性' ? '#dc2626' : '#d97706'
-                      }}>{m.result}</span>
-                    </td>
-                    <td style={{ padding: '6px 12px', color: '#374151' }}>{m.intensity === 0 ? '-' : '★'.repeat(m.intensity)}</td>
-                    <td style={{ padding: '6px 12px', color: '#374151' }}>{m.percentage}%</td>
-                    <td style={{ padding: '6px 12px', color: '#64748b' }}>{m.location}</td>
+            <div style={{ background: '#f8fafc', borderRadius: 8, overflow: 'hidden' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                <thead>
+                  <tr style={{ background: '#f1f5f9' }}>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', color: '#64748b', fontWeight: 600, fontSize: 12 }}>标记物</th>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', color: '#64748b', fontWeight: 600, fontSize: 12 }}>结果</th>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', color: '#64748b', fontWeight: 600, fontSize: 12 }}>强度</th>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', color: '#64748b', fontWeight: 600, fontSize: 12 }}>阳性率</th>
+                    <th style={{ padding: '10px 16px', textAlign: 'left', color: '#64748b', fontWeight: 600, fontSize: 12 }}>定位</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {r.markers.map((m, i) => (
+                    <tr key={i} style={{ borderBottom: i < r.markers.length - 1 ? '1px solid #e2e8f0' : 'none' }}>
+                      <td style={{ padding: '10px 16px', fontWeight: 600, color: '#F97316' }}>{m.marker}</td>
+                      <td style={{ padding: '10px 16px' }}>
+                        <span style={{
+                          padding: '3px 10px', borderRadius: 12, fontSize: 12, fontWeight: 500,
+                          background: m.result === '阳性' ? '#dcfce7' : m.result === '阴性' ? '#fee2e2' : '#fef3c7',
+                          color: m.result === '阳性' ? '#166534' : m.result === '阴性' ? '#dc2626' : '#d97706'
+                        }}>{m.result}</span>
+                      </td>
+                      <td style={{ padding: '10px 16px', color: '#374151' }}>{m.intensity === 0 ? '-' : '★'.repeat(m.intensity)}</td>
+                      <td style={{ padding: '10px 16px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <div style={{ background: '#e2e8f0', borderRadius: 4, width: 60, height: 6, overflow: 'hidden' }}>
+                            <div style={{ width: `${m.percentage}%`, height: '100%', background: m.percentage >= 50 ? '#16a34a' : '#F97316', borderRadius: 4 }} />
+                          </div>
+                          <span style={{ color: '#64748b', fontSize: 12 }}>{m.percentage}%</span>
+                        </div>
+                      </td>
+                      <td style={{ padding: '10px 16px', color: '#64748b', fontSize: 12 }}>{m.location}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         ))}
       </div>

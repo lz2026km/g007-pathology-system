@@ -197,6 +197,23 @@ export interface ReagentInventory {
   lastReagentQuantity?: number;
 }
 
+export interface BorrowRecord {
+  id: string;
+  recordId: string; // 借阅编号JY20260503001
+  specimenId: string; // 病理号
+  patientName: string;
+  slidesNo: string; // 切片号
+  borrower: string; // 借阅人
+  department: string;
+  borrowDate: string;
+  expectedReturnDate: string;
+  actualReturnDate?: string;
+  purpose: string; // 借阅用途
+  status: '借出' | '已归还' | '超期' | '遗失';
+  approver: string; // 审批人
+  remarks?: string;
+}
+
 // ========== 模拟数据 ==========
 
 export const patients: Patient[] = [
@@ -2058,6 +2075,24 @@ export const reagentInventory: ReagentInventory[] = [
   { id: 'R058', reagentCode: 'IHC-PDL1-001', reagentName: 'PD-L1（SP263）抗体', category: '抗体', specification: '0.1mL/支', manufacturer: 'Ventana', lotNumber: 'VP20240428', expiryDate: '2025-10-28', stockQuantity: 8, unit: '支', location: '2°C冰箱E区-3层', status: '正常', lastReagentDate: '2025-04-28', lastReagentQuantity: 12 },
   { id: 'R059', reagentCode: 'IHC-PDL1-002', reagentName: 'PD-L1（22C3）抗体', category: '抗体', specification: '0.1mL/支', manufacturer: 'Dako', lotNumber: 'LP20240501', expiryDate: '2025-11-01', stockQuantity: 6, unit: '支', location: '2°C冰箱E区-4层', status: '正常', lastReagentDate: '2025-05-01', lastReagentQuantity: 10 },
   { id: 'R060', reagentCode: 'IHC-CK19-001', reagentName: 'CK19（A53-B/A2.26）抗体', category: '抗体', specification: '0.1mL/支', manufacturer: 'Ventana', lotNumber: 'VC20240505', expiryDate: '2025-11-05', stockQuantity: 10, unit: '支', location: '2°C冰箱E区-4层', status: '正常', lastReagentDate: '2025-05-05', lastReagentQuantity: 15 },
+];
+
+export const borrowRecords: BorrowRecord[] = [
+  { id: 'B001', recordId: 'JY20260503001', specimenId: 'BX202605020001', patientName: '张伟', slidesNo: 'QP-2025-0502-001', borrower: '王海涛', department: '胸外科', borrowDate: '2025-05-03 14:00', expectedReturnDate: '2025-05-10 14:00', actualReturnDate: '2025-05-08 10:30', purpose: '会诊讨论', status: '已归还', approver: '张建国', remarks: '学术会议使用' },
+  { id: 'B002', recordId: 'JY20260503002', specimenId: 'BX202605020002', patientName: '李娜', slidesNo: 'QP-2025-0502-002', borrower: '刘芳', department: '乳腺外科', borrowDate: '2025-05-03 09:00', expectedReturnDate: '2025-05-10 09:00', purpose: 'MDT讨论', status: '借出', approver: '王丽华' },
+  { id: 'B003', recordId: 'JY20260502001', specimenId: 'BX202605020008', patientName: '吴磊', slidesNo: 'QP-2025-0502-008', borrower: '赵志明', department: '骨科', borrowDate: '2025-05-02 16:00', expectedReturnDate: '2025-05-09 16:00', actualReturnDate: '2025-05-09 14:00', purpose: '患者家属借阅', status: '已归还', approver: '刘明辉', remarks: '患者复印病历' },
+  { id: 'B004', recordId: 'JY20260502002', specimenId: 'BX202605020015', patientName: '高峰', slidesNo: 'QP-2025-0502-015', borrower: '周主任', department: '神经外科', borrowDate: '2025-05-02 10:00', expectedReturnDate: '2025-05-09 10:00', purpose: '术中冰冻对比', status: '已归还', approver: '李敏' },
+  { id: 'B005', recordId: 'JY20260501001', specimenId: 'BX202605010093', patientName: '赵新建', slidesNo: 'QP-2025-0501-093', borrower: '孙教授', department: '胸外科', borrowDate: '2025-05-01 15:00', expectedReturnDate: '2025-05-08 15:00', actualReturnDate: '2025-05-07 11:00', purpose: '科研课题', status: '已归还', approver: '张建国', remarks: '肺癌分子机制研究' },
+  { id: 'B006', recordId: 'JY20260501002', specimenId: 'BX202605010061', patientName: '黄丽', slidesNo: 'QP-2025-0501-061', borrower: '陈医生', department: '肿瘤内科', borrowDate: '2025-05-01 08:30', expectedReturnDate: '2025-05-15 08:30', purpose: '免疫组化复查', status: '超期', approver: '王丽华', remarks: '需补充HER2检测' },
+  { id: 'B007', recordId: 'JY20260430001', specimenId: 'BX202604300081', patientName: '冯志强', slidesNo: 'QP-2025-0430-081', borrower: '林主任', department: '胸外科', borrowDate: '2025-04-30 11:00', expectedReturnDate: '2025-05-07 11:00', actualReturnDate: '2025-05-06 16:00', purpose: '远程会诊', status: '已归还', approver: '李敏' },
+  { id: 'B008', recordId: 'JY20260430002', specimenId: 'BX202604300082', patientName: '曹雪梅', slidesNo: 'QP-2025-0430-082', borrower: '张华', department: '内分泌科', borrowDate: '2025-04-30 14:00', expectedReturnDate: '2025-05-07 14:00', actualReturnDate: '2025-05-05 09:00', purpose: '院际会诊', status: '已归还', approver: '陈美华' },
+  { id: 'B009', recordId: 'JY20260428001', specimenId: 'BX202604280065', patientName: '高峰', slidesNo: 'QP-2025-0428-065', borrower: '吴教授', department: '神经外科', borrowDate: '2025-04-28 10:00', expectedReturnDate: '2025-05-05 10:00', purpose: '学术交流', status: '遗失', approver: '王志强', remarks: '切片遗失，正在查找' },
+  { id: 'B010', recordId: 'JY20260428002', specimenId: 'BX202604280058', patientName: '吴磊', slidesNo: 'QP-2025-0428-058', borrower: '黄医生', department: '骨科', borrowDate: '2025-04-28 15:00', expectedReturnDate: '2025-05-05 15:00', actualReturnDate: '2025-05-04 11:30', purpose: '教学读片', status: '已归还', approver: '刘明辉' },
+  { id: 'B011', recordId: 'JY20260427001', specimenId: 'BX202604270056', patientName: '赵军', slidesNo: 'QP-2025-0427-056', borrower: '马主任', department: '泌尿外科', borrowDate: '2025-04-27 09:00', expectedReturnDate: '2025-05-04 09:00', actualReturnDate: '2025-05-03 14:00', purpose: '病理质控', status: '已归还', approver: '陈志强' },
+  { id: 'B012', recordId: 'JY20260426001', specimenId: 'BX202604260051', patientName: '张伟', slidesNo: 'QP-2025-0426-051', borrower: '李教授', department: '胸外科', borrowDate: '2025-04-26 16:00', expectedReturnDate: '2025-05-03 16:00', actualReturnDate: '2025-05-02 10:00', purpose: '科研课题', status: '已归还', approver: '张建国', remarks: 'EGFR突变研究' },
+  { id: 'B013', recordId: 'JY20260504001', specimenId: 'BX202605030017', patientName: '周建平', slidesNo: 'QP-2025-0503-017', borrower: '王医生', department: '胸外科', borrowDate: '2025-05-04 08:00', expectedReturnDate: '2025-05-11 08:00', purpose: '患者家属借阅', status: '借出', approver: '张建国' },
+  { id: 'B014', recordId: 'JY20260504002', specimenId: 'BX202605030027', patientName: '钱文华', slidesNo: 'QP-2025-0503-027', borrower: '郑教授', department: '肝胆外科', borrowDate: '2025-05-04 10:00', expectedReturnDate: '2025-05-11 10:00', purpose: '会诊讨论', status: '借出', approver: '张建国' },
+  { id: 'B015', recordId: 'JY20260504003', specimenId: 'BX202605030035', patientName: '徐志强', slidesNo: 'QP-2025-0503-035', borrower: '叶主任', department: '泌尿外科', borrowDate: '2025-05-04 14:00', expectedReturnDate: '2025-05-11 14:00', purpose: '学术会议', status: '借出', approver: '陈志强' },
 ];
 
 export const statisticsData = {

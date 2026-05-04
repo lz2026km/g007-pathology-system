@@ -13,6 +13,15 @@ import ConsultationPage from './pages/ConsultationPage'
 import CasesPage from './pages/CasesPage'
 import StatisticsPage from './pages/StatisticsPage'
 import SettingsPage from './pages/SettingsPage'
+import ArchivePage from './pages/ArchivePage'
+import EquipmentPage from './pages/EquipmentPage'
+import TrainingPage from './pages/TrainingPage'
+import AuditPage from './pages/AuditPage'
+import EmergencyPage from './pages/EmergencyPage'
+import LoanManagementPage from './pages/LoanManagementPage'
+import ConsumablesPage from './pages/ConsumablesPage'
+import DataReportPage from './pages/DataReportPage'
+import DigitalSlidePage from './pages/DigitalSlidePage'
 
 function App() {
   return (
@@ -33,6 +42,15 @@ function App() {
           <Route path="g007/cases" element={<CasesPage />} />
           <Route path="g007/statistics" element={<StatisticsPage />} />
           <Route path="g007/admin" element={<SettingsPage />} />
+          <Route path="g007/archive" element={<ArchivePage />} />
+          <Route path="g007/equipment" element={<EquipmentPage />} />
+          <Route path="g007/training" element={<TrainingPage />} />
+          <Route path="g007/audit" element={<AuditPage />} />
+          <Route path="g007/emergency" element={<EmergencyPage />} />
+          <Route path="g007/loan" element={<LoanManagementPage />} />
+          <Route path="g007/consumables" element={<ConsumablesPage />} />
+          <Route path="g007/data-report" element={<DataReportPage />} />
+          <Route path="g007/digital-slide" element={<DigitalSlidePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
