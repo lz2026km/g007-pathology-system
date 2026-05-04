@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom'
-import { Home, TestTube, GitBranch, FileText, Zap, ShieldCheck, Microscope, Dna, Building2, Users, BookOpen, BarChart3, Settings, Archive, Monitor, GraduationCap, ClipboardList, AlertTriangle, FolderOpen, Package, FileBarChart, Microscope as MicroSlide } from 'lucide-react'
+import { Home, TestTube, GitBranch, FileText, Zap, ShieldCheck, Microscope, Dna, Building2, Users, BookOpen, BarChart3, Settings, Archive, Monitor, GraduationCap, ClipboardList, AlertTriangle, FolderOpen, Package, FileBarChart, Microscope as MicroSlide, Brain, Scan, Camera, RefreshCw, Cloud, Syringe, Beaker, TrendingUp, HeartPulse, Circle } from 'lucide-react'
 import { useState } from 'react'
 
 // F1-F12 快捷键功能映射
@@ -24,13 +24,23 @@ const navItems = [
   { path: '/g007/workflow', label: '工作流管理', icon: GitBranch },
   { path: '/g007/report', label: '病理报告', icon: FileText },
   { path: '/g007/frozen', label: '术中冰冻', icon: Zap },
+  { path: '/g007/ai-frozen', label: 'AI冰冻快诊', icon: Brain },
+  { path: '/g007/image-analysis', label: '图像分析', icon: Scan },
+  { path: '/g007/specimen-photo', label: '标本摄影', icon: Camera },
   { path: '/g007/qc', label: '质控管理', icon: ShieldCheck },
+  { path: '/g007/pdca', label: 'PDCA改进', icon: RefreshCw },
   { path: '/g007/ihc', label: '免疫组化', icon: Microscope },
+  { path: '/g007/tct', label: 'TCT细胞学', icon: Circle },
   { path: '/g007/molecular', label: '分子病理', icon: Dna },
   { path: '/g007/regional', label: '区域病理', icon: Building2 },
+  { path: '/g007/regional-frozen', label: '区域冰冻会诊', icon: Cloud },
   { path: '/g007/consultation', label: '会诊管理', icon: Users },
   { path: '/g007/cases', label: '典型病例库', icon: BookOpen },
+  { path: '/g007/vaccine', label: 'HPV疫苗', icon: Syringe },
+  { path: '/g007/research', label: '科研项目', icon: Beaker },
+  { path: '/g007/workload', label: '医师工作量', icon: TrendingUp },
   { path: '/g007/archive', label: '档案管理', icon: Archive },
+  { path: '/g007/autopsy', label: '死亡尸检', icon: HeartPulse },
   { path: '/g007/equipment', label: '设备管理', icon: Monitor },
   { path: '/g007/training', label: '培训管理', icon: GraduationCap },
   { path: '/g007/audit', label: '审计管理', icon: ClipboardList },
@@ -70,142 +80,67 @@ export default function Layout() {
       <aside style={{ width: 220, background: '#1e3a5f', color: '#fff', padding: '16px 0', position: 'fixed', height: '100vh', overflowY: 'auto' }}>
         <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: 16 }}>
           <h1 style={{ fontSize: 18, fontWeight: 600 }}>全院病理系统</h1>
-          <div style={{ fontSize: 12, opacity: 0.7, marginTop: 4 }}>G007 · v0.2.0 · 病理专家</div>
+          <div style={{ fontSize: 12, opacity: 0.7, marginTop: 4 }}>G007 · v0.3.0 · 病理专家</div>
         </div>
         <nav>
           {navItems.map(item => {
-            const Icon = item.icon
-            const isActive = location.pathname === item.path || (item.path !== '/g007' && location.pathname.startsWith(item.path))
+            const isActive = location.pathname === item.path
             return (
               <Link
                 key={item.path}
                 to={item.path}
+                onMouseEnter={() => setActiveTooltip(item.path)}
+                onMouseLeave={() => setActiveTooltip(null)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 12,
+                  gap: 10,
                   padding: '10px 20px',
-                  margin: '2px 0',
-                  borderLeft: isActive ? '4px solid #4ade80' : '4px solid transparent',
-                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.8)',
-                  background: isActive ? 'rgba(255,255,255,0.12)' : 'transparent',
+                  color: isActive ? '#fff' : 'rgba(255,255,255,0.65)',
+                  background: isActive ? 'rgba(249,115,22,0.25)' : 'transparent',
+                  borderLeft: isActive ? '3px solid #F97316' : '3px solid transparent',
                   textDecoration: 'none',
-                  fontSize: 16,
-                  fontWeight: isActive ? 600 : 400,
+                  fontSize: 14,
+                  transition: 'all 0.15s',
+                  position: 'relative',
                 }}
               >
-                <Icon size={18} />
-                {item.label}
+                <item.icon size={16} />
+                <span>{item.label}</span>
+                {activeTooltip === item.path && (
+                  <div style={{ position: 'absolute', left: '100%', top: '50%', transform: 'translateY(-50%)', marginLeft: 8, background: '#1e3a5f', color: '#fff', padding: '6px 10px', borderRadius: 6, fontSize: 12, whiteSpace: 'nowrap', zIndex: 100, boxShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
+                    {item.label}
+                  </div>
+                )}
               </Link>
             )
           })}
         </nav>
       </aside>
-      <main style={{ marginLeft: 220, flex: 1, background: '#f5f7fa', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        {/* F1-F12 快捷键工具栏 - 深蓝背景白字≥16px */}
+
+      <main style={{ marginLeft: 220, flex: 1, background: '#f8fafc', minHeight: '100vh' }}>
         {showToolbar && (
-          <div style={{
-            background: '#1e3a5f',
-            borderBottom: '2px solid #0f172a',
-            display: 'flex',
-            alignItems: 'center',
-            padding: '0 12px',
-            gap: 4,
-            flexShrink: 0,
-            overflowX: 'auto',
-          }}>
+          <div style={{ background: '#fff', borderBottom: '1px solid #e2e8f0', padding: '8px 24px', display: 'flex', alignItems: 'center', gap: 4, position: 'sticky', top: 0, zIndex: 50 }}>
             {KEYBOARD_SHORTCUTS.map(shortcut => (
-              <div key={shortcut.key} style={{ position: 'relative' }}>
-                <button
-                  onClick={() => handleShortcut(shortcut.action)}
-                  onMouseEnter={() => { setActiveTooltip(shortcut.key); }}
-                  onMouseLeave={() => { setActiveTooltip(null); }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6,
-                    padding: '8px 12px',
-                    background: 'transparent',
-                    border: 'none',
-                    borderRadius: 4,
-                    cursor: 'pointer',
-                    color: '#ffffff',
-                    fontSize: 16,
-                    fontWeight: 600,
-                    whiteSpace: 'nowrap',
-                    transition: 'background 0.15s',
-                  }}
-                >
-                  <span style={{ fontSize: 14, fontWeight: 700, color: '#60a5fa' }}>{shortcut.key}</span>
-                  <span style={{ fontSize: 18 }}>{shortcut.icon}</span>
-                  <span>{shortcut.label}</span>
-                </button>
-                {/* 工具提示 */}
-                {activeTooltip === shortcut.key && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '100%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    marginTop: 4,
-                    padding: '6px 10px',
-                    background: '#0f172a',
-                    color: '#ffffff',
-                    fontSize: 12,
-                    borderRadius: 4,
-                    whiteSpace: 'nowrap',
-                    zIndex: 1000,
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                  }}>
-                    {shortcut.key} - {shortcut.label}
-                  </div>
-                )}
-              </div>
+              <button
+                key={shortcut.key}
+                onClick={() => handleShortcut(shortcut.action)}
+                title={shortcut.label}
+                style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '4px 8px', border: 'none', background: 'transparent', color: '#64748b', cursor: 'pointer', borderRadius: 4, fontSize: 12 }}
+              >
+                <span>{shortcut.icon}</span>
+                <span style={{ fontSize: 11, color: '#94a3b8' }}>{shortcut.key}</span>
+              </button>
             ))}
-            {/* 关闭工具栏按钮 */}
-            <button
-              onClick={() => setShowToolbar(false)}
-              style={{
-                marginLeft: 'auto',
-                padding: '6px 10px',
-                background: 'transparent',
-                border: 'none',
-                color: '#94a3b8',
-                cursor: 'pointer',
-                fontSize: 16,
-              }}
-            >
-              ✕
-            </button>
+            <div style={{ marginLeft: 'auto' }}>
+              <button onClick={() => setShowToolbar(false)} style={{ padding: '4px 8px', border: 'none', background: 'transparent', color: '#94a3b8', cursor: 'pointer', fontSize: 12 }}>隐藏工具栏</button>
+            </div>
           </div>
         )}
-        {/* 未显示工具栏时的恢复按钮 */}
         {!showToolbar && (
-          <div style={{
-            background: '#1e3a5f',
-            padding: '4px 12px',
-            display: 'flex',
-            alignItems: 'center',
-          }}>
-            <button
-              onClick={() => setShowToolbar(true)}
-              style={{
-                padding: '4px 12px',
-                background: '#2d4a6f',
-                border: 'none',
-                borderRadius: 4,
-                color: '#ffffff',
-                fontSize: 14,
-                cursor: 'pointer',
-              }}
-            >
-              显示快捷工具栏
-            </button>
-          </div>
+          <button onClick={() => setShowToolbar(true)} style={{ position: 'fixed', bottom: 20, right: 20, width: 40, height: 40, borderRadius: '50%', background: '#1e3a5f', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 18, boxShadow: '0 2px 8px rgba(0,0,0,0.3)', zIndex: 100 }}>☰</button>
         )}
-        <div style={{ flex: 1, padding: 24 }}>
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     </div>
   )
