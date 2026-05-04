@@ -20,12 +20,12 @@ interface FrozenConsultation {
   completeTime?: string
 }
 
-// 模拟会诊数据
+// 模拟会诊数据（全部虚构医院名，避免法律风险）
 const mockConsultations: FrozenConsultation[] = [
   // 待会诊（3条）
   {
     id: 'RC001',
-    hospital: '南山区中心医院',
+    hospital: '汉东省京州市第一人民医院',
     patientName: '陈某某',
     patientAge: 52,
     cancerType: '乳腺肿块',
@@ -36,7 +36,7 @@ const mockConsultations: FrozenConsultation[] = [
   },
   {
     id: 'RC002',
-    hospital: '西城区人民医院',
+    hospital: '汉东省滨江市中心医院',
     patientName: '张某某',
     patientAge: 45,
     cancerType: '卵巢囊肿',
@@ -47,7 +47,7 @@ const mockConsultations: FrozenConsultation[] = [
   },
   {
     id: 'RC003',
-    hospital: '东城区妇幼保健院',
+    hospital: '汉东省东华区妇幼保健院',
     patientName: '李某某',
     patientAge: 38,
     cancerType: '宫颈赘生物',
@@ -59,7 +59,7 @@ const mockConsultations: FrozenConsultation[] = [
   // 已完成（3条）
   {
     id: 'RC004',
-    hospital: '北山区第一医院',
+    hospital: '汉东省西山县城关医院',
     patientName: '王某某',
     patientAge: 61,
     cancerType: '肺结节',
@@ -74,7 +74,7 @@ const mockConsultations: FrozenConsultation[] = [
   },
   {
     id: 'RC005',
-    hospital: '滨海市中心医院',
+    hospital: '汉东省滨海市第二医院',
     patientName: '赵某某',
     patientAge: 55,
     cancerType: '胃溃疡',
@@ -89,7 +89,7 @@ const mockConsultations: FrozenConsultation[] = [
   },
   {
     id: 'RC006',
-    hospital: '开发区医院',
+    hospital: '汉东省开发新区卫生院',
     patientName: '周某某',
     patientAge: 42,
     cancerType: '甲状腺结节',
